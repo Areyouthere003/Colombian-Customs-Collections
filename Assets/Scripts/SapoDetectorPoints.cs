@@ -42,6 +42,7 @@ public class SapoDetectorPoints : MonoBehaviour
         if (other.gameObject.CompareTag("Ring"))
         {
             valid01 = true;
+            other.enabled = false;
         }
     }
 
