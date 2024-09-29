@@ -676,9 +676,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2514241385066704716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b21c0d1721c6314b9cf4ecb9fddc06e, type: 3}
+  m_Script: {fileID: 11500000, guid: 813932ca9c606244d8ddb512c1a684f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   arrayMenus:
-  - {fileID: 2514241385066704716}
-  parentCanvitas: {fileID: 2514241385066704716}
+  - {fileID: 2514241383457269675}
+  - {fileID: 2514241383227173300}
+  parentCanvitas: {fileID: 2514241383896245830}
