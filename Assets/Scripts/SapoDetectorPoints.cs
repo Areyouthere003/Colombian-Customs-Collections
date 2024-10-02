@@ -12,13 +12,17 @@ public class SapoDetectorPoints : MonoBehaviour
     [SerializeField] TextMeshProUGUI momentumScore;
     [SerializeField] Animator animator;
     [SerializeField] bool valid01 = false;
+    [SerializeField] WritingDB writingDB;
+    [SerializeField] HighScore _highScore;
+    int _value = 0, _maxValue = 0;
+
 
     private const string gainPoint = ("GainPoint");
 
     // Start is called before the first frame update
     void Start()
     {
-
+        _maxValue = _highScore.HighValue;
     }
 
     // Update is called once per frame
@@ -33,6 +37,18 @@ public class SapoDetectorPoints : MonoBehaviour
             animator.SetBool(gainPoint, true);
             valid01 = false;
             StartCoroutine(restAnimation());
+
+            _value = totalPoints;
+
+            if (_value > _maxValue)
+            {
+                _highScore.HighValue = _value;
+                _maxValue = _value;
+            }
+
+            writingDB.AddData();
+
+            
         }
 
     }
@@ -50,6 +66,12 @@ public class SapoDetectorPoints : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         animator.SetBool(gainPoint, false);
+    }
+
+    public int MaxValue
+    {
+        get {return _maxValue;}
+        set {_maxValue = value;}
     }
 
 }

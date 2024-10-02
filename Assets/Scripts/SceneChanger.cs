@@ -26,6 +26,7 @@ public class SceneChanger : MonoBehaviour
         HideMenus();
         ShowMenu(0);
     }
+
     void HideMenus() {
         foreach (GameObject menu in arrayMenus)
         {
@@ -54,21 +55,24 @@ public class SceneChanger : MonoBehaviour
     }
     public void OnNextButtonPressed()
     {
-        if(currentIndex == 0)
-        {
-            RenderSettings.skybox = skyboxNight;
-        }
-        else {
-        
-        RenderSettings.skybox = skyboxGray;
-        }
         if (currentIndex < arrayMenus.Length - 1)
         {
-            HideMenu(currentIndex, () => {
+            HideMenu(currentIndex, () =>
+            {
                 currentIndex++;
                 ShowMenu(currentIndex);
             });
         }
+
+        if (currentIndex == 0)
+        {
+            RenderSettings.skybox = skyboxNight;
+        }
+        else 
+        {
+                RenderSettings.skybox = skyboxGray;
+        }
+
     }
    public void ResetCurrent()
     {
@@ -77,11 +81,13 @@ public class SceneChanger : MonoBehaviour
         RenderSettings.skybox = skyboxNight;
         currentIndex = 0;
     }
-    IEnumerator DeactivateLastMenu()
-    {
-        yield return new WaitForSeconds(5f);
-        HideMenu(2);
-    }
+
+    //IEnumerator DeactivateLastMenu()
+    //{
+    //    yield return new WaitForSeconds(5f);
+    //    HideMenu(2);
+    //}
+
     public void CloseMenu(int index)
     {
         if (index < arrayMenus.Length - 1)
@@ -92,8 +98,16 @@ public class SceneChanger : MonoBehaviour
         }
     }
 
+    public void ReturnMenu()
+    {
+        arrayMenus[1].SetActive(false);
+        //LeanTween.scale(parentCanvitas, Vector3.one, 0.5f).setEase(LeanTweenType.easeOutExpo);
+        LeanTween.scale(gameObject, Vector3.one, 0.5f).setEase(LeanTweenType.easeOutExpo);
+    }
+
+
     void Update()
     {
-        
+
     }
 }

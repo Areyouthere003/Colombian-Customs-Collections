@@ -18,15 +18,16 @@ public class CanvasRanaManager : MonoBehaviour
             LeanTween.scale(parentCanvitas, Vector3.one, 0.5f).setEase(LeanTweenType.easeOutExpo);
         }
     }
-   public void CloseMenu()
+   public void CloseMenu(int number)
     {
-        HideMenu(0);
+        HideMenu(number);
     } 
+
     public void HideMenu(int index, System.Action onComplete = null)
     {
         if (index >= 0 && index < arrayMenus.Length)
         {
-            LeanTween.scale(parentCanvitas, Vector3.zero, 0.5f).setEase(LeanTweenType.easeInExpo).setOnComplete(() =>
+            LeanTween.scale(arrayMenus[index], Vector3.zero, 0.5f).setEase(LeanTweenType.easeInExpo).setOnComplete(() =>
             {
                 arrayMenus[index].SetActive(false);
                 onComplete?.Invoke();
