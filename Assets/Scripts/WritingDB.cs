@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Data;
@@ -59,9 +59,9 @@ public class WritingDB : MonoBehaviour
         UnityWebRequest loadDB = new UnityWebRequest(rutaDB);
         //while (!loadDB.isDone) { }
         //Hasta aquí termina la parte posible a eliminar
-
         // Crear la cadena de conexión utilizando la biblioteca Mono.Data.Sqlite
         strConexion = "URI=file:" + rutaDB;
+
         // Inicializar y abrir la conexión a la base de datos SQLite
         dbConnection = new SqliteConnection(strConexion);
         dbConnection.Open();
@@ -105,3 +105,4 @@ public class WritingDB : MonoBehaviour
         AbrirDB();
     }
 }
+*/

@@ -7,27 +7,38 @@ using Random = UnityEngine.Random;
 public class BGM_Play : MonoBehaviour
 {
     [SerializeField] AudioSource[] bgmList;
+    [SerializeField] AudioClip[] playList;
+    [SerializeField] GameObject fatherSoundSpeaker;
     [SerializeField] private int currentNumberIndex = 0, pastNumber01 = 0, pastNumber02 = 0;
 
-    private AudioSource audiosource;
-    
+    AudioSource audiosource;
+    AudioClip audioMain;
+    [SerializeField] AudioSource[] soundSpeakersInScene;
 
     void Start()
     {
         currentNumberIndex = GetRandomNumber(currentNumberIndex);
         bgmList = gameObject.GetComponentsInChildren<AudioSource>();
+        soundSpeakersInScene = fatherSoundSpeaker.GetComponentsInChildren<AudioSource>();
         audiosource = bgmList[currentNumberIndex].GetComponent<AudioSource>();
-        audiosource.Play();
+        audioMain = playList[currentNumberIndex];
+        audiosource.PlayOneShot(audioMain, 1);
+        for (int i = 0; i < soundSpeakersInScene.Length; i++)
+        {
+            soundSpeakersInScene[i].PlayOneShot(audioMain, 1) ;
+            //soundSpeakersInScene[i].
+        }
     }
 
     void Update()
     {
-        if(!audiosource.isPlaying)
+
+        if (!audiosource.isPlaying)
         {
             pastNumber02 = pastNumber01;
             pastNumber01 = currentNumberIndex;
             currentNumberIndex = GetRandomNumber(currentNumberIndex);
-            
+
             if (pastNumber01 != currentNumberIndex && pastNumber02 != currentNumberIndex)
             {
                 /*switch(currentNumberIndex)
@@ -64,20 +75,26 @@ public class BGM_Play : MonoBehaviour
 
 
                 }*/
-          
-                audiosource = bgmList[currentNumberIndex].GetComponent<AudioSource>();
-                audiosource.Play();
+
+                //audiosource = bgmList[currentNumberIndex].GetComponent<AudioSource>();
+                audioMain = playList[currentNumberIndex];
+                //audiosource.Play();
+                audiosource.PlayOneShot(audioMain, 1);
+                for (int i = 0; i < soundSpeakersInScene.Length; i++)
+                {
+                    soundSpeakersInScene[i].PlayOneShot(audioMain, 1);
+                }
             }
             else
             {
                 currentNumberIndex = GetRandomNumber(currentNumberIndex);
             }
-            
-        }
-        else
-        {
 
         }
+        //else
+        //{
+
+        //}
     }
 
     private int GetRandomNumber(int number)

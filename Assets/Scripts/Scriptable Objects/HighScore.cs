@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [CreateAssetMenu]
 public class HighScore : ScriptableObject
 {
     [SerializeField] int _highScore;
-    [SerializeField] string _stringHS;
+    [SerializeField] string _playerName;
 
     public int HighValue
     {
@@ -16,7 +17,12 @@ public class HighScore : ScriptableObject
 
     public string stringValue
     {
-        get { return _stringHS; }
-        set { _stringHS = value; }
+        get { return _playerName; }
+        set { _playerName = value; }
+    }
+
+    public void GetNewName(TextMeshProUGUI newName)
+    {
+        stringValue = newName.text;
     }
 }

@@ -12,7 +12,7 @@ public class SapoDetectorPoints : MonoBehaviour
     [SerializeField] TextMeshProUGUI momentumScore;
     [SerializeField] Animator animator;
     [SerializeField] bool valid01 = false;
-    [SerializeField] WritingDB writingDB;
+    //[SerializeField] WritingDB writingDB;
     [SerializeField] HighScore _highScore;
     int _value = 0, _maxValue = 0;
 
@@ -46,7 +46,7 @@ public class SapoDetectorPoints : MonoBehaviour
                 _maxValue = _value;
             }
 
-            writingDB.AddData();
+            //writingDB.AddData();
 
             
         }
