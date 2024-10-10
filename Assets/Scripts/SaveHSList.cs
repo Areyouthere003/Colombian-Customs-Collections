@@ -7,7 +7,7 @@ public class SaveHSList : MonoBehaviour
 {
     [SerializeField] HighScoreData highScoreData = new HighScoreData();
     //[SerializeField] GameObject parentsScoreList;
-    public bool valid = false;
+    public bool valid = false/*, valid2 = false*/;
     string _highScoreData = string.Empty;
     string _hSLFilePath = string.Empty;
 
@@ -25,6 +25,12 @@ public class SaveHSList : MonoBehaviour
             SortListBig();
             valid = false;
         }
+
+        //if(valid2)
+        //{
+        //    highScoreData.AddList();
+        //    valid2 = false;
+        //}
         //if(highScoreData.IsSending)
         //{
         //    highScoreData.AddNameToList();
@@ -123,6 +129,7 @@ public class HighScoreData
 
     public void AddList()
     {
+        highScore = new PlayerHighScore();
         highScore.name = _name;
         highScore.score = _score;
         _high.Add(highScore);
@@ -130,15 +137,11 @@ public class HighScoreData
 
     public void SortList()
     {
-        //foreach (PlayerHighScore score in _high)
-        //{
-        //    _high.Sort((p1, p2) => p2.score.CompareTo(p1.score));
-        //}
 
         for (int i = 0; i < _high.Count; i++)
         {
             _high.Sort((p1, p2) => p2.score.CompareTo(p1.score));
-            Debug.Log(_high[i].score);
+            //Debug.Log(_high[i].score);
         }
     }
 

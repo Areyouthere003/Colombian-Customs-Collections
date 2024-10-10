@@ -68,6 +68,7 @@ public class ActivationZone : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("cuantas veces se activa");
             saveData.GetComponent<SaveHSList>().GetScore(_highScoreTotal.HighValue);
             saveData.GetComponent<SaveHSList>().GetName(_highScoreTotal.stringValue);
             saveData.GetComponent<SaveHSList>().AddToList();

@@ -40,11 +40,11 @@ public class SapoDetectorPoints : MonoBehaviour
 
             _value = totalPoints;
 
-            if (_value > _maxValue)
-            {
-                _highScore.HighValue = _value;
-                _maxValue = _value;
-            }
+            //if (_value > _maxValue)
+            //{
+            _highScore.HighValue = _value;
+            //    _maxValue = _value;
+            //}
 
             //writingDB.AddData();
 

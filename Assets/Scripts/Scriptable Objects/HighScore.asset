@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HighScore
   m_EditorClassIdentifier: 
   _highScore: 0
-  _playerName: noname
+  _playerName: TiTo
